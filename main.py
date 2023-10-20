@@ -4,6 +4,8 @@ from urllib.parse import urljoin, urlparse
 from datetime import datetime
 import subprocess
 import time
+import requests
+from bs4 import BeautifulSoup
 
 def download_image(img_tag, base_url):
     img_url = img_tag['src']
@@ -45,7 +47,7 @@ def delete_old_files():
     current_directory = os.path.dirname(os.path.realpath(__file__))
     files = os.listdir(current_directory)
     for file in files:
-        if file != "main.py" and file != "favicon.ico":
+        if file != "main.py" and file != "LICENSE" and file != "README.md" and file != "requirements.txt":
             os.remove(os.path.join(current_directory, file))
 
 delete_old_files()
